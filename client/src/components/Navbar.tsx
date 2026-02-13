@@ -20,7 +20,7 @@ export function Navbar() {
     { label: "About Us", href: "#mission" },
     { label: "Services", href: "#services" },
     { label: "Doctors", href: "#doctors" },
-    { label: "Contact", href: "#appointment" },
+    { label: "Contact", href: "#schedule" },
   ];
 
   return (
@@ -60,7 +60,7 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a href="#appointment">
+            <a href="#schedule">
               <Button
                 className={`px-6 transition-colors ${
                   isScrolled
@@ -108,7 +108,7 @@ export function Navbar() {
                 </a>
               ))}
               <a
-                href="#appointment"
+                href="#schedule"
                 onClick={() => setIsOpen(false)}
                 className="block pt-2"
               >

@@ -38,7 +38,7 @@ export function Footer() {
                 </svg>
               </div>
               <span className="font-display font-bold text-2xl tracking-tight">
-                Medenic
+                Wellspire
               </span>
             </div>
 
@@ -48,29 +48,36 @@ export function Footer() {
             </p>
 
             <p className="text-gray-500 text-sm mb-10">
-              2118 Thornridge Cir. Syracuse, Connecticut 35624
+              2118 West Patel nagar Kalinga Chowk
             </p>
 
-            <Button className="bg-[#21467a] hover:bg-[#21468a] text-white rounded-none px-6 py-6 font-semibold uppercase tracking-wide text-xs w-full sm:w-auto">
-              <span className="mr-2">›</span>
-              Book Appointment
-            </Button>
+            <a href="#schedule">
+              <Button className="bg-[#21467a] hover:bg-[#21468a] text-white rounded-none px-6 py-6 font-semibold uppercase tracking-wide text-xs w-full sm:w-auto">
+                <span className="mr-2">›</span>
+                Book Appointment
+              </Button>
+            </a>
           </div>
 
           {/* Right Section: Navigation Grid */}
           <div className="lg:w-2/3 grid grid-cols-2">
             {/* Column 1 */}
             <div className="border-r border-gray-200">
-              {["About Us", "Services", "Blogs", "Doctors"].map((item) => (
+              {[
+                { name: "About Us", href: "#mission" },
+                { name: "Services", href: "#services" },
+                { name: "Blogs", href: "#" },
+                { name: "Doctors", href: "#doctors" },
+              ].map((item) => (
                 <div
-                  key={item}
+                  key={item.name}
                   className="border-b border-gray-200 py-6 pl-8 lg:pl-12"
                 >
                   <a
-                    href="#"
+                    href={item.href}
                     className="font-bold text-sm tracking-wide uppercase hover:text-[#9fcd25] transition-colors"
                   >
-                    {item}
+                    {item.name}
                   </a>
                 </div>
               ))}
@@ -78,21 +85,24 @@ export function Footer() {
 
             {/* Column 2 */}
             <div>
-              {["Appointment", "Contact Us", "Licensing", "Changelog"].map(
-                (item) => (
-                  <div
-                    key={item}
-                    className="border-b border-gray-200 py-6 pl-8 lg:pl-12"
+              {[
+                { name: "Appointment", href: "#schedule" },
+                { name: "Contact Us", href: "#schedule" },
+                { name: "Licensing", href: "#" },
+                { name: "Changelog", href: "#" },
+              ].map((item) => (
+                <div
+                  key={item.name}
+                  className="border-b border-gray-200 py-6 pl-8 lg:pl-12"
+                >
+                  <a
+                    href={item.href}
+                    className="font-bold text-sm tracking-wide uppercase hover:text-[#9fcd25] transition-colors"
                   >
-                    <a
-                      href="#"
-                      className="font-bold text-sm tracking-wide uppercase hover:text-[#9fcd25] transition-colors"
-                    >
-                      {item}
-                    </a>
-                  </div>
-                ),
-              )}
+                    {item.name}
+                  </a>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -100,12 +110,8 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-200 py-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-4">
           <div>
-            © {new Date().getFullYear()} Medenic. Designed by Aartlc. Powered
-            by{" "}
-            <span className="underline decoration-1 underline-offset-2">
-              Webflow
-            </span>
-            .
+            © {new Date().getFullYear()} Wellspire. Designed by WeGrow Consultancy & Solution
+           
           </div>
 
           <div className="flex gap-6">

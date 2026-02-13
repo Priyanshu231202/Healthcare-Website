@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export function Schedule() {
   return (
-    <section className="py-24 bg-[#FAF9F6]">
+    <section id="schedule" className="py-24 bg-[#FAF9F6]">
       <div className="w-full px-4 md:px-8 lg:px-16 text-center">
         <div className="flex items-center justify-center gap-2 mb-4">
           <span className="text-lg font-bold">✦</span>
