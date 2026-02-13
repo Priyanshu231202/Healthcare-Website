@@ -53,8 +53,8 @@ export function Values() {
         </motion.div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-16 items-start">
+      <div className="w-full px-4 md:px-8 lg:px-16">
+        <div className="flex flex-col lg:flex-row gap-20 items-stretch">
           {/* Left Image */}
           <div className="w-full lg:w-1/2">
             <div className="relative aspect-[4/5] rounded-none overflow-hidden group">

@@ -24,7 +24,7 @@ const doctorsList = [
 export function Doctors() {
   return (
     <section id="doctors" className="py-24 bg-[#FAF9F6]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-4 md:px-8 lg:px-16">
         {/* Header */}
         <div className="text-center mb-20">
           <div className="flex items-center justify-center gap-2 mb-4">

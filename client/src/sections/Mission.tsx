@@ -8,7 +8,7 @@ import img5 from "@assets/Services/img5.webp";
 export function Mission() {
   return (
     <section id="mission" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+      <div className="w-full px-4 md:px-8 lg:px-16 mb-16">
         <div className="flex flex-col lg:flex-row justify-between items-end gap-12">
           <div className="max-w-3xl">
             <h2 className="text-5xl lg:text-6xl font-display font-medium text-accent leading-[1.1] mb-8">
