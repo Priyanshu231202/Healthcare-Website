@@ -1,11 +1,20 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const links = [
     { label: "About Us", href: "#mission" },
@@ -15,41 +24,62 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-100">
+    <nav
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+        isScrolled
+          ? "bg-white/90 backdrop-blur-md shadow-sm border-gray-100 py-2"
+          : "bg-transparent border-white/10 py-4"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center">
           <Link href="/">
             <div className="flex items-center gap-2 cursor-pointer">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold font-display text-xl">
-                W
-              </div>
-              <span className="font-display font-bold text-2xl text-accent tracking-tight">WellSpire</span>
+              <span
+                className={`font-display font-bold text-2xl tracking-tight transition-colors ${
+                  isScrolled ? "text-gray-900" : "text-white"
+                }`}
+              >
+                WellSpire
+              </span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             {links.map((link) => (
-              <a 
-                key={link.label} 
+              <a
+                key={link.label}
                 href={link.href}
-                className="text-gray-600 hover:text-primary font-medium transition-colors duration-200"
+                className={`font-medium text-sm tracking-wide transition-colors duration-200 uppercase ${
+                  isScrolled
+                    ? "text-gray-600 hover:text-primary"
+                    : "text-white hover:text-white/80"
+                }`}
               >
                 {link.label}
               </a>
             ))}
             <a href="#appointment">
-              <Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 shadow-lg shadow-primary/20">
-                Book an Appointment
+              <Button
+                className={`px-6 transition-colors ${
+                  isScrolled
+                    ? "bg-[#9fcd25] hover:bg-[#8cd660] text-black"
+                    : "bg-transparent hover:bg-white/10 text-white border border-white/30"
+                }`}
+              >
+                Book an Appointment <span className="ml-2">→</span>
               </Button>
             </a>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button 
+            <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-600 hover:text-primary p-2"
+              className={`p-2 transition-colors ${
+                isScrolled ? "text-gray-600" : "text-white"
+              }`}
             >
               {isOpen ? <X /> : <Menu />}
             </button>
@@ -60,7 +90,7 @@ export function Navbar() {
       {/* Mobile Nav */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -68,7 +98,7 @@ export function Navbar() {
           >
             <div className="px-4 py-6 space-y-4">
               {links.map((link) => (
-                <a 
+                <a
                   key={link.label}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
@@ -77,7 +107,11 @@ export function Navbar() {
                   {link.label}
                 </a>
               ))}
-              <a href="#appointment" onClick={() => setIsOpen(false)} className="block pt-2">
+              <a
+                href="#appointment"
+                onClick={() => setIsOpen(false)}
+                className="block pt-2"
+              >
                 <Button className="w-full bg-primary hover:bg-primary/90 text-white rounded-full">
                   Book an Appointment
                 </Button>
